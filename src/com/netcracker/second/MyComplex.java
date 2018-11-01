@@ -150,4 +150,33 @@ public class MyComplex {
         return newComplex;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null) {
+            return false;
+        }
+        if(this == obj) {
+            return true;
+        }
+        if(!(obj instanceof MyComplex)) {
+            return false;
+        }
+
+        MyComplex complex = (MyComplex) obj;
+
+        boolean result = complex.real == this.real & complex.imag == this.imag;
+        return result;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        long longReal = Double.doubleToLongBits(real);
+        long longImag = Double.doubleToLongBits(imag);
+        result = 31 * result + (int)(longReal ^ (longReal >>> 32));
+        result = 31 * result + (int)(longImag ^ (longImag >>> 32));
+
+        return result;
+    }
+
 }

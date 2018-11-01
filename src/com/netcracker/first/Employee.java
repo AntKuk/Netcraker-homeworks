@@ -56,4 +56,34 @@ public class Employee {
         return str;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null) {
+            return false;
+        }
+        if(this == obj) {
+            return true;
+        }
+        if(!(obj instanceof Employee)) {
+            return false;
+        }
+
+        Employee employee = (Employee) obj;
+
+        boolean result = employee.id == this.id & employee.firstName.equals(this.firstName) & employee.lastName.equals(this.lastName) & employee.salary == this.salary;
+        return result;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+
+        result = 31 * result + id;
+        result = 31 * result + firstName.hashCode();
+        result = 31 * result + lastName.hashCode();
+        result = 31 * result + salary;
+
+        return result;
+    }
+
 }

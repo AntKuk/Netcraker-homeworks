@@ -43,4 +43,32 @@ public class Circle {
         return area;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null) {
+            return false;
+        }
+        if(this == obj) {
+            return true;
+        }
+        if(!(obj instanceof Circle)) {
+            return false;
+        }
+
+        Circle circle = (Circle) obj;
+
+        boolean result = circle.radius ==this.radius & circle.color.equals(this.color);
+        return result;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        long longRadius = Double.doubleToLongBits(radius);
+        result = 31 * result + (int)(longRadius ^ (longRadius >>> 32));
+        result = 31 * result + color.hashCode();
+
+        return result;
+    }
+
 }

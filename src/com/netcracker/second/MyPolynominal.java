@@ -1,5 +1,7 @@
 package com.netcracker.second;
 
+import java.util.Arrays;
+
 public class MyPolynominal {
     private double[] coeffs;
 
@@ -77,7 +79,6 @@ public class MyPolynominal {
         double[][] subTable = new double[this.coeffs.length][right.coeffs.length];
         double[][] resTable = new double[this.coeffs.length][this.coeffs.length+right.coeffs.length-1];
         double[] result = new double[resTable[0].length];
-        //double[] result = new double[this.coeffs.length+right.coeffs.length-1];
 
         for(int i = 0; i <= this.coeffs.length-1; i++) {
             for(int j = 0; j <= right.coeffs.length-1; j++) {
@@ -86,7 +87,7 @@ public class MyPolynominal {
         }
 
         int y = 0;
-        //for(int i = 0; i <= this.coeffs.length-1; i++) {
+
         for(int i = 0; i <= subTable.length-1; i++) {
 
             //for(int j = 0; j <= right.coeffs.length-1; j++) {
@@ -101,7 +102,7 @@ public class MyPolynominal {
             y++;
         }
 
-        //for(int i = 0; i <= this.coeffs.length+right.coeffs.length-2; i++) {
+
         for(int i = 0; i <= resTable[0].length-1; i++) {
             double value = 0.0;
             for(int j = 0; j <= resTable.length-1; j++) {
@@ -111,6 +112,35 @@ public class MyPolynominal {
         }
 
         return new MyPolynominal(result);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null) {
+            return false;
+        }
+        if(this == obj) {
+            return true;
+        }
+        if(!(obj instanceof MyPolynominal)) {
+            return false;
+        }
+
+        MyPolynominal pol = (MyPolynominal) obj;
+
+        boolean result = Arrays.equals(pol.coeffs, this.coeffs);
+        return result;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        for (double d : coeffs) {
+            long longD = Double.doubleToLongBits(d);
+            result = 31 * result + (int)(longD ^ (longD >>> 32));
+        }
+
+        return result;
     }
 
 

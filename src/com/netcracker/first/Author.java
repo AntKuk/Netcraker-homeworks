@@ -30,4 +30,32 @@ public class Author {
         String str = new String("Author[name=" + name + ",email=" + email + ",gender=" + gender + "]");
         return str;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null) {
+            return false;
+        }
+        if(this == obj) {
+            return true;
+        }
+        if(!(obj instanceof Author)) {
+            return false;
+        }
+
+        Author author = (Author) obj;
+
+        boolean result = author.name.equals(this.name) & author.email.equals(this.email) & author.gender == this.gender;
+        return result;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + name.hashCode();
+        result = 31 * result + email.hashCode();
+        result = 31 * result + (int)gender;
+
+        return result;
+    }
 }

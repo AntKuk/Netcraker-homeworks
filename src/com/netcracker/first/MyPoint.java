@@ -58,5 +58,33 @@ public class MyPoint {
         return distance;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null) {
+            return false;
+        }
+        if(this == obj) {
+            return true;
+        }
+        if(!(obj instanceof MyPoint)) {
+            return false;
+        }
+
+        MyPoint point = (MyPoint) obj;
+
+        boolean result = point.x == this.x & point.y == this.y;
+        return result;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+
+        result = 31 * result + x;
+        result = 31 * result + y;
+
+        return result;
+    }
+
 
 }

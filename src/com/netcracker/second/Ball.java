@@ -74,5 +74,35 @@ public class Ball {
         return str;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null) {
+            return false;
+        }
+        if(this == obj) {
+            return true;
+        }
+        if(!(obj instanceof Ball)) {
+            return false;
+        }
+
+        Ball ball = (Ball) obj;
+
+        boolean result = ball.x == this.x & ball.y == this.y & ball.radius == this.radius & ball.xDelta == this.xDelta & ball.yDelta == this.yDelta;
+        return result;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + Float.floatToIntBits(x);
+        result = 31 * result + Float.floatToIntBits(y);
+        result = 31 * result + radius;
+        result = 31 * result + Float.floatToIntBits(xDelta);
+        result = 31 * result + Float.floatToIntBits(yDelta);
+
+        return result;
+    }
+
 
 }
