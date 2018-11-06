@@ -71,9 +71,7 @@ public class Book {
     @Override
 
     public boolean equals(Object obj) {
-        if(obj == null) {
-            return false;
-        }
+
         if(this == obj) {
             return true;
         }
