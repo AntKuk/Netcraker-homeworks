@@ -1,7 +1,8 @@
 package com.netcracker.fourth;
 
+import java.lang.reflect.Array;
 import java.util.Iterator;
-import java.util.NoSuchElementException;
+
 
 public class MyLinkedList<E> implements ILinkedList<E> {
 
@@ -74,6 +75,11 @@ public class MyLinkedList<E> implements ILinkedList<E> {
     @Override
     public E get(int index) {
         E result = null;
+
+        if(index > size) {
+            return null;
+        }
+
         Node<E> currentNode = firstNode;
         for(int i = 0; i <= size - 1; i++) {
             if(i == index) {
@@ -106,6 +112,10 @@ public class MyLinkedList<E> implements ILinkedList<E> {
 
     @Override
     public E remove(int index) {
+        if(index > size) {
+            return null;
+        }
+
         Node<E> currentNode = firstNode;
         Node<E> removingNode = null;
         E result = null;
@@ -127,6 +137,10 @@ public class MyLinkedList<E> implements ILinkedList<E> {
 
     @Override
     public E set(int index, E element) {
+        if(index > size) {
+            return null;
+        }
+
         Node<E> currentNode = firstNode;
         E result = null;
         for(int i = 0; i <= size - 1; i++) {
@@ -155,6 +169,7 @@ public class MyLinkedList<E> implements ILinkedList<E> {
         return result;
 
     }
+
 
     @Override
     public String toString() {
