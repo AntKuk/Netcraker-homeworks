@@ -45,9 +45,9 @@ public class MainClass {
 
         list.set(3, 77);
 
-        Object[] array = list.toArray();
-        for(Object obj : array) {
-            System.out.println(obj);
+        Integer[] array = list.toArray();
+        for(Integer i : array) {
+            System.out.println(i);
         }
 
         for(Integer n : list) {

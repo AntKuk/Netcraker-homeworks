@@ -157,9 +157,9 @@ public class MyLinkedList<E> implements ILinkedList<E> {
     }
 
     @Override
-    public Object[] toArray() {
+    public E[] toArray() {
+        E[] result = (E[]) Array.newInstance(this.firstNode.getElement().getClass(), this.size);
 
-        Object[] result = new Object[size];
         Node<E> currentNode = firstNode;
         for(int i = 0; i <= size - 1; i++) {
             result[i] = currentNode.getElement();
